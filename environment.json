@@ -1,0 +1,17 @@
+{
+  "environment": "development",
+  "port": 3000,
+  "timezone": "Etc./UTC",
+  "mysql": {
+    "host": "localhost",
+    "port": 3000,
+    "database": "kompost_template",
+    "username": "kompost",
+    "password": "password"
+  },
+  "jwt": {
+    "privateKey": "secret",
+    "maxRefreshTokens": 20,
+    "tokenValidityHours": 1
+  }
+}

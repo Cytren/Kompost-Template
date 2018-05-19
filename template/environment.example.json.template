@@ -1,0 +1,17 @@
+{
+  "environment": "development",
+  "port": 3000,
+  "timezone": "$#timezone#$",
+  "mysql": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "DATABASE-NAME",
+    "username": "MYSQL-USERNAME",
+    "password": "MYSQL-PASSWORD"
+  },
+  "jwt": {
+    "privateKey": "RANDOM-SECRET-KEY",
+    "maxRefreshTokens": 20,
+    "tokenValidityHours": 1
+  }
+}

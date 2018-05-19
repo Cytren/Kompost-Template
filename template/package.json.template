@@ -1,0 +1,42 @@
+{
+  "name": "$#appKey#$",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "clean": "node node_modules/gulp/bin/gulp clean",
+    "build": "node node_modules/gulp/bin/gulp build",
+    "test": "node node_modules/gulp/bin/gulp build && node node_modules/mocha/bin/mocha build/test/test.js",
+    "dev": "node node_modules/gulp/bin/gulp build && node build/main/app.js",
+    "serve": "node build/main/app.js"
+  },
+  "keywords": [],
+  "author": "$#author#$",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "js-base64": "^2.4.5",
+    "jsonwebtoken": "^8.0.1",
+    "kompost": "0.0.2",
+    "moment": "^2.19.2",
+    "typeorm": "^0.2.6"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
+    "@types/chai": "^4.0.1",
+    "@types/js-base64": "^2.3.0",
+    "@types/jsonwebtoken": "^7.2.3",
+    "@types/koa": "^2.0.44",
+    "@types/koa-router": "^7.0.27",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.1.1",
+    "chai": "^4.1.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-sequence": "^1.0.0",
+    "gulp-typescript": "^4.0.2",
+    "mocha": "^5.1.1",
+    "tslint": "^5.7.0",
+    "typescript": "^2.6.2"
+  }
+}

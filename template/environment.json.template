@@ -1,0 +1,17 @@
+{
+  "environment": "development",
+  "port": 3000,
+  "timezone": "$#timezone#$",
+  "mysql": {
+    "host": "$#mysqlHost#$",
+    "port": $#mysqlPort#$,
+    "database": "$#mysqlDatabase#$",
+    "username": "$#mysqlUsername#$",
+    "password": "$#mysqlPassword#$"
+  },
+  "jwt": {
+    "privateKey": "$#jwtKey#$",
+    "maxRefreshTokens": 20,
+    "tokenValidityHours": 1
+  }
+}
