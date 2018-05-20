@@ -15,7 +15,7 @@
     "bcrypt": "^2.0.1",
     "js-base64": "^2.4.5",
     "jsonwebtoken": "^8.0.1",
-    "kompost": "0.0.2",
+    "kompost": "0.0.3",
     "moment": "^2.19.2",
     "typeorm": "^0.2.6"
   },
