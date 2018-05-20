@@ -19,7 +19,10 @@ export default class UserController extends Controller {
     @get(":id")
     @transform(UserTransformer)
     public async show (id: string) {
-        const user = await User.findOne(id);
+        const user = await User.findOne({
+            where: { id }
+        });
+
         this.checkExists(id, user);
 
         return user;
@@ -35,7 +38,10 @@ export default class UserController extends Controller {
     @put(":id")
     @request(UserRequest)
     public async update (id: string, request: User) {
-        const user = await User.findOne(id);
+        const user = await User.findOne({
+            where: { id }
+        });
+
         this.checkExists(id, user);
 
         Object.entries(request).forEach(([key, value]) => user[key] = value);
@@ -46,7 +52,10 @@ export default class UserController extends Controller {
 
     @del(":id")
     public async destroy (id: string) {
-        const user = await User.findOne(id);
+        const user = await User.findOne({
+            where: { id }
+        });
+
         this.checkExists(id, user);
 
         await user.remove();
