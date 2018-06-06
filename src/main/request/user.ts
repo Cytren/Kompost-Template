@@ -1,15 +1,15 @@
 
-import {RequestBuilder} from "kompost"
-import {hash} from "bcrypt";
+import { createRequest } from "kompost"
+import { hash } from "bcrypt";
 import User from "../model/user";
 
-export default new RequestBuilder(User)
-    .validate({
+export default createRequest(User, {
+    validation: {
         username: { type: "string" },
         password: { type: "string" },
         email: { type: "string", optional: true }
-    })
-    .build(async model => {
+    },
+    async build (model) {
         const user = new User();
 
         user.username = model.username;
@@ -18,4 +18,5 @@ export default new RequestBuilder(User)
         user.type = "user";
 
         return user;
-    });
+    }
+});
