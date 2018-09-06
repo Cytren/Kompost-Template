@@ -5,9 +5,9 @@ import Environment from "./core/environment";
 import User from "./model/user";
 import RefreshToken from "./model/refresh-token";
 import AuthMiddleware from "./middleware/auth";
-import AuthController from "./controller/auth";
-import UserController from "./controller/user";
-import AuthService from "./service/auth";
+import AuthController from "./controller/auth-controller";
+import UserController from "./controller/user-controller";
+import AuthService from "./service/auth-service";
 
 const environment: Environment = require("../../environment.json");
 

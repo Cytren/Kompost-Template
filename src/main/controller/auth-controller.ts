@@ -8,10 +8,10 @@ import {compare} from "bcrypt";
 
 import Environment from "../core/environment";
 import Auth from "../entity/auth";
-import AuthService from "../service/auth";
+import AuthService from "../service/auth-service";
 import RefreshToken from "../model/refresh-token";
 import User from "../model/user";
-import AuthRequest from "../request/auth";
+import AuthRequest from "../request/auth-request";
 
 import * as moment from "moment";
 

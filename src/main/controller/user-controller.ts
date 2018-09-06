@@ -3,8 +3,8 @@ import {
     Controller, controller, request, transform, get, post, put, del
 } from "kompost";
 
-import UserTransformer from "../transformer/user";
-import UserRequest from "../request/user";
+import UserTransformer from "../transformer/user-transformer";
+import UserRequest from "../request/create-user-request";
 import User from "../model/user";
 
 @controller("users")

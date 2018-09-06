@@ -2,9 +2,11 @@
 import { createRequest } from "kompost"
 import Auth from "../entity/auth";
 
-export default createRequest(Auth, {
+const AuthRequest = createRequest(Auth, {
     validation: {
         username: { type: "string" },
         password: { type: "string" }
     }
 });
+
+export default AuthRequest;

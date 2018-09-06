@@ -3,7 +3,7 @@ import { createRequest } from "kompost"
 import { hash } from "bcrypt";
 import User from "../model/user";
 
-export default createRequest(User, {
+const CreateUserRequest = createRequest(User, {
     validation: {
         username: { type: "string" },
         password: { type: "string" },
@@ -20,3 +20,5 @@ export default createRequest(User, {
         return user;
     }
 });
+
+export default CreateUserRequest;
