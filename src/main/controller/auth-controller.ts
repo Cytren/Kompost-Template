@@ -1,6 +1,6 @@
 
 import {
-    Controller, inject, request, controller, post, put
+    Controller, inject, request, controller, post, put, expose
 } from "kompost";
 
 import {sign} from "jsonwebtoken";
@@ -21,6 +21,7 @@ export default class AuthController extends Controller {
     @inject private authService: AuthService;
 
     @post
+    @expose
     @request(AuthRequest)
     public async create (auth: Auth) {
         const user = await User.findOne({ username: auth.username });
@@ -60,6 +61,7 @@ export default class AuthController extends Controller {
     }
 
     @put(":token")
+    @expose
     public async update (token: string) {
         const refreshToken = await RefreshToken.findOne({
             where: { token },

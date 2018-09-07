@@ -1,12 +1,12 @@
 
-import { createRequest } from "kompost"
+import { Request, Validation } from "kompost"
 import Auth from "../entity/auth";
 
-const AuthRequest = createRequest(Auth, {
-    validation: {
+export default class AuthRequest extends Request<Auth> {
+    readonly type = Auth;
+
+    protected readonly validation: Validation = {
         username: { type: "string" },
         password: { type: "string" }
-    }
-});
-
-export default AuthRequest;
+    };
+}

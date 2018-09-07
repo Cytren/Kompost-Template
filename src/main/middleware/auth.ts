@@ -1,24 +1,18 @@
 
 import { verify } from "jsonwebtoken";
-import { Context, inject, provideDynamic, removeProvider } from "kompost";
+import { Middleware, MiddlewareParams, Context, inject, provideDynamic, removeProvider } from "kompost";
 import Environment from "../core/environment";
 import User from "../model/user";
 import UserIdentifier from "../entity/user-identifier";
 
-export default class AuthMiddleware {
+export default class AuthMiddleware implements Middleware {
     @inject environment: Environment;
 
-    public async run (context: Context, next: () => Promise<any>) {
-        const isProtected = (() => {
-            if (this.environment.environment === "development") {
-                return !(context.path.startsWith("/api/auth") ||
-                    (context.path === "/api/users" && context.method === "POST"));
-            }
+    public async run (context: Context, next: () => Promise<void>, params: MiddlewareParams) {
+        const { endpointConfig } = params;
+        const expose = endpointConfig ? endpointConfig.expose : undefined;
 
-            return !context.path.startsWith("/api/auth");
-        })();
-
-        if (isProtected) {
+        if (!expose || !expose(context)) {
             const auth: string = context.header.authorization;
 
             if (!auth) {

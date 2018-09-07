@@ -1,15 +1,25 @@
 
-import { createRequest } from "kompost"
-import { hash } from "bcrypt";
+import { Request, Validation } from "kompost"
 import User from "../model/user";
+import {hash} from "bcrypt";
+import {FailHandler} from "kompost/src/request";
 
-const CreateUserRequest = createRequest(User, {
-    validation: {
+export default class CreateUserRequest extends Request<User> {
+    readonly type = User;
+
+    readonly validation: Validation = {
         username: { type: "string" },
         password: { type: "string" },
         email: { type: "string", optional: true }
-    },
-    async build (model) {
+    };
+
+    async validate (model: any, fail: FailHandler) {
+        if (await User.findOne({ username: model.username })) {
+            fail("The account already exists.");
+        }
+    }
+
+    async build (model: any) {
         const user = new User();
 
         user.username = model.username;
@@ -19,6 +29,4 @@ const CreateUserRequest = createRequest(User, {
 
         return user;
     }
-});
-
-export default CreateUserRequest;
+}

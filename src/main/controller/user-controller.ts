@@ -1,11 +1,12 @@
 
 import {
-    Controller, controller, request, transform, get, post, put, del
+    Controller, controller, request, transform, get, post, put, del, expose, getInjection
 } from "kompost";
 
 import UserTransformer from "../transformer/user-transformer";
 import UserRequest from "../request/create-user-request";
 import User from "../model/user";
+import Environment from "../core/environment";
 
 @controller("users")
 export default class UserController extends Controller {
@@ -29,6 +30,7 @@ export default class UserController extends Controller {
     }
 
     @post
+    @expose(() => getInjection(Environment).environment === 'development')
     @request(UserRequest)
     public async create (user: User) {
         await user.save();
