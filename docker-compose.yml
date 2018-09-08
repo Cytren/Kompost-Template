@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  sql:
+    build: ./docker/mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=kompost
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=kompost_template
+    ports:
+      - 3306:3306
