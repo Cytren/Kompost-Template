@@ -8,7 +8,9 @@
     "build": "node node_modules/gulp/bin/gulp build",
     "test": "node node_modules/gulp/bin/gulp build && node node_modules/mocha/bin/mocha build/test/test.js",
     "dev": "node node_modules/gulp/bin/gulp build && node build/main/app.js",
-    "serve": "node build/main/app.js"
+    "serve": "node build/main/app.js",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down"
   },
   "keywords": [],
   "author": "$#author#$",
