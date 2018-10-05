@@ -4,6 +4,7 @@ services:
   sql:
     build: ./docker/mariadb
     environment:
+      - MYSQL_ROOT_PASSWORD=$#mysqlPassword#$
       - MYSQL_USER=$#mysqlUsername#$
       - MYSQL_PASSWORD=$#mysqlPassword#$
       - MYSQL_DATABASE=$#mysqlDatabase#$
