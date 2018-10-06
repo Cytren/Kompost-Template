@@ -1,8 +1,7 @@
 
-import { Request, Validation } from "kompost"
+import { Request, Validation, FailHandler } from "kompost"
 import User from "../model/user";
 import {hash} from "bcrypt";
-import {FailHandler} from "kompost/src/request";
 
 export default class CreateUserRequest extends Request<User> {
     readonly type = User;
