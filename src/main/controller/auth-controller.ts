@@ -53,7 +53,7 @@ export default class AuthController extends Controller {
             await RefreshToken.save(refreshToken);
             return {
                 refreshToken: token,
-                usedId: user.id
+                userId: user.id
             };
         } else {
             this.invalidCredentials();
