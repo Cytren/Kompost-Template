@@ -9,7 +9,7 @@ export default class CreateUserRequest extends Request<User> {
     readonly validation: Validation = {
         username: { type: "string" },
         password: { type: "string" },
-        email: { type: "string", optional: true }
+        email: { type: "string" }
     };
 
     async validate (model: any, fail: FailHandler) {

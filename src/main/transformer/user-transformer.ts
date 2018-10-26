@@ -1,10 +1,9 @@
 
-import {Transformer, inject} from "kompost";
+import {Transformer} from "kompost";
 import User from "../model/user";
-import UserIdentifier from "../entity/user-identifier";
+import Context from "../core/context";
 
 export default class UserTransformer extends Transformer<User> {
-    @inject userId: UserIdentifier;
 
     protected async transform (user: User) {
         const result: any = {
@@ -12,7 +11,9 @@ export default class UserTransformer extends Transformer<User> {
             username: user.username,
         };
 
-        if (this.userId.value === user.id && user.email) {
+        const userId = (this.context as Context).userId;
+
+        if (userId === user.id) {
             Object.assign(result, {
                 email: user.email
             });

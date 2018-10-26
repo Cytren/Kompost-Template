@@ -14,7 +14,7 @@ export default class User extends Model {
     @Column()
     public type: "user" | "admin";
 
-    @Column({ nullable: true })
+    @Column()
     public email: string;
 
     @OneToMany(type => RefreshToken, token => token.user)

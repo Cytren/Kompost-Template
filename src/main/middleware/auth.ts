@@ -1,9 +1,8 @@
 
-import { verify } from "jsonwebtoken";
-import { Middleware, MiddlewareParams, Context, inject, provideSingleton, removeProvider } from "kompost";
+import {verify} from "jsonwebtoken";
+import {Middleware, MiddlewareParams, inject} from "kompost";
 import Environment from "../core/environment";
-import UserIdentifier from "../entity/user-identifier";
-import UserProvider from "../entity/user-provider";
+import Context from "../core/context";
 
 export default class AuthMiddleware implements Middleware {
     @inject environment: Environment;
@@ -31,8 +30,7 @@ export default class AuthMiddleware implements Middleware {
 
             try {
                 const token = verify(tokenString, this.environment.jwt.privateKey) as any;
-                provideSingleton(UserIdentifier, () => new UserIdentifier(token.sub));
-                provideSingleton(UserProvider, () => new UserProvider(token.sub));
+                context.userId = parseInt(token.sub);
             } catch (error) {
                 context.body = { error };
                 return;
@@ -40,8 +38,5 @@ export default class AuthMiddleware implements Middleware {
         }
 
         await next();
-
-        removeProvider(UserIdentifier);
-        removeProvider(UserProvider);
     }
 }
